@@ -7,6 +7,7 @@ function App({ Component, pageProps }) {
       <Head>
         <title>Next.js App</title>
       </Head>
+      {/* <h1 className="text-red-500">Hello</h1> */}
       <Component {...pageProps} />
     </>
   );
