@@ -1,30 +1,110 @@
-import styles from '../styles/Home.module.css';
+import styles from "../styles/Home.module.css";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion"
+} from "@/components/ui/accordion";
 
 function Home() {
+  const langagesData = [
+    {
+      name: "Js",
+      img: "js.svg",
+    },
+    {
+      name: "Html",
+      img: "html.svg",
+    },
+    {
+      name: "Css",
+      img: "css.svg",
+    },
+    {
+      name: "React",
+      img: "react.svg",
+    },
+    {
+      name: "Node",
+      img: "node.svg",
+    },
+    {
+      name: "Bootsrap",
+      img: "bootsrap.svg",
+    },
+    {
+      name: "Sass",
+      img: "sass.svg",
+    },
+    {
+      name: "Tailwind",
+      img: "tailwind.svg",
+    },
+    {
+      name: "Next",
+      img: "next.png",
+    },
+  ];
+
+  const langages = langagesData.map((langage, i) => {
+    return (
+      <img
+        key={i}
+        className={`${styles.profil_right_imgLogo} ${styles[`profil_right_imgLogo_${langage.name.toLowerCase()}`]}`}
+        src={langage.img}
+        alt={langage.name}
+      />
+    );
+  });
+  const Outils = langagesData.map((langage, i) => {
+    return (
+      <img
+        key={i}
+        className={`${styles.profil_left_imgLogo} ${styles[`profil_left_imgLogo_${langage.name.toLowerCase()}`]}`}
+        src={langage.img}
+        alt={langage.name}
+      />
+    );
+  });
+
   return (
-    <div>
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-            <div className="p-4 bg-blue-100">
-      <h1 className="text-red-500 text-3xl font-bold">Hello Tailwind!</h1>
-      <Accordion type="single" collapsible defaultValue="item-1">
-  <AccordionItem value="item-1">
-    <AccordionTrigger>Is it accessible?</AccordionTrigger>
-    <AccordionContent>
-      Yes. It adheres to the WAI-ARIA design pattern.
-    </AccordionContent>
-  </AccordionItem>
-</Accordion>
+    <div className={styles.profil}>
+      <div className={styles.profil_left}>
+        <div className={styles.profil_left_text}>
+          <h2>Qui suis-je</h2>
+          <br />
+          <p>
+            Bonjour, je suis Azeddine EL AIOUD développeur web full stack
+            ReackJS, titulaire d’un Bac +3. Je suis actuellement à la recherche
+            d’une opportunité en CDI ou en CDD afin de mettre mes compétences au
+            service de nouveaux projets.
+          </p>
+          <br />
+          <p>Mes Principaux Outils:</p>
+          <br />
+          <div className={styles.profil_left_outils}>{Outils}</div>
+        </div>
+        <div className={styles.profil_left_btn}></div>
+      </div>
+      <div className={styles.profil_right}>
+        <img className={styles.profil_right_me} src="/pdpme.png" alt="" />
+        {langages}
+      </div>
     </div>
-        </h1>
-      </main>
-    </div>
+
+    // PROJET - FETCH la bdd  exemple
+    /*
+      const allLists = () => {
+    token &&
+      fetch(`http://localhost:3000/lists/${token}`)
+        .then((response) => response.json())
+        .then((listsUser) => setListsData(listsUser));
+  };
+
+  useEffect(() => {
+    allLists();
+  }, []);
+    */
   );
 }
 

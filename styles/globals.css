@@ -1,21 +1,94 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap");
 
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    Segoe UI,
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    Fira Sans,
+    Droid Sans,
+    Helvetica Neue,
+    sans-serif;
+  /* background-color: red; */
 }
 
 * {
   box-sizing: border-box;
 }
 
-
-
+ 
+:root {
+  --bg-color: #5a0a2a;
+  --text-white: #ffffff;
+  --text-nav: #f0d0d8;
+  --font-mono: 'Space Mono', monospace;
+  --header-height: 72px;
+  --transition-speed: 0.2s;
+}
+ 
+.header {
+  background-color: var(--bg-color);
+  padding: 0 2rem;
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+}
+ 
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+}
+ 
+.header-avatar {
+  font-size: 1.8rem;
+  line-height: 1;
+}
+ 
+.header-name {
+  color: var(--text-white);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+ 
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+ 
+.header-nav a {
+  color: var(--text-nav);
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  transition: color var(--transition-speed) ease;
+}
+ 
+.header-nav a:hover {
+  color: var(--text-white);
+}
+  img{
+    width: 68px;
+    /* background: transparent; */
+    /* height: 68px; */
+  }
+ 
 @layer base {
   :root {
     --background: 0 0% 100%;
