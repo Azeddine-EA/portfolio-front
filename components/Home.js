@@ -5,8 +5,10 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import {useCallback, useEffect, useState} from 'react';
 
 function Home() {
+  const [projectData, setProjectData] = useState([]);
   const langagesData = [
     {
       name: "Js",
@@ -66,6 +68,16 @@ function Home() {
       />
     );
   });
+    // PROJET - FETCH la bdd  exemple
+  const allProject = () => {
+      fetch(`http://localhost:3000/project/read`)
+        .then((response) => response.json())
+        .then((projects) => setProjectData(projects));
+  };
+
+  useEffect(() => {
+    allProject();
+  }, []);
 
   return (
     <div className={styles.profil}>
@@ -92,19 +104,7 @@ function Home() {
       </div>
     </div>
 
-    // PROJET - FETCH la bdd  exemple
-    /*
-      const allLists = () => {
-    token &&
-      fetch(`http://localhost:3000/lists/${token}`)
-        .then((response) => response.json())
-        .then((listsUser) => setListsData(listsUser));
-  };
-
-  useEffect(() => {
-    allLists();
-  }, []);
-    */
+  
   );
 }
 
