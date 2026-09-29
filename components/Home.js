@@ -1,4 +1,6 @@
 import styles from "../styles/Home.module.css";
+import ProjectCard from './ProjectCard';
+// import styles from "../styles/projectCard.module.scss";
 import {
   Accordion,
   AccordionContent,
@@ -72,14 +74,18 @@ function Home() {
   const allProject = () => {
       fetch(`http://localhost:3000/project/read`)
         .then((response) => response.json())
-        .then((projects) => setProjectData(projects));
+        .then((data) => setProjectData(data.projects));
   };
 
   useEffect(() => {
     allProject();
   }, []);
 
+  const projetcs = projectData.map((project, i)=>
+    project ? <ProjectCard key={i} {...project}/>: null  );
+
   return (
+    <>
     <div className={styles.profil}>
       <div className={styles.profil_left}>
         <div className={styles.profil_left_text}>
@@ -102,8 +108,13 @@ function Home() {
         <img className={styles.profil_right_me} src="/pdpme.png" alt="" />
         {langages}
       </div>
-    </div>
+    </div> 
 
+    <div className={styles.cards}>
+      <h2>Projet</h2>
+        {projetcs}
+    </div>
+    </>
   
   );
 }
