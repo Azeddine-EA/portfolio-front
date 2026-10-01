@@ -1,4 +1,4 @@
-import styles from "../styles/Home.module.css";
+import styles from "../styles/Home.module.scss";
 import ProjectCard from './ProjectCard';
 // import styles from "../styles/projectCard.module.scss";
 import {
@@ -93,9 +93,9 @@ function Home() {
           <br />
           <p>
             Bonjour, je suis Azeddine EL AIOUD développeur web full stack
-            ReackJS, titulaire d’un Bac +3. Je suis actuellement à la recherche
-            d’une opportunité en CDI ou en CDD afin de mettre mes compétences au
-            service de nouveaux projets.
+            ReackJS/NextJs, titulaire d’un Bac +3. 
+            <br />Je suis actuellement à la recherche de nouvelles missions, que ce soit en freelance ou en emploi, afin de mettre mes compétences au service de projets variés et de relever de nouveaux défis.
+
           </p>
           <br />
           <p>Mes Principaux Outils:</p>
@@ -111,8 +111,11 @@ function Home() {
     </div> 
 
     <div className={styles.cards}>
-      <h2>Projet</h2>
+      <h2>Projets</h2>
         {projetcs}
+        <div className={styles.card}>
+          <p>Soon</p>
+        </div>
     </div>
     </>
   

@@ -10,7 +10,7 @@ export default function Header() {
 
       <nav className="header-nav">
         <a href="#profil">Profil</a>
-        <a href="#parcours">Parcours</a>
+        {/* <a href="#parcours">Parcours</a> */}
         <a href="#projets">Projets</a>
         <a href="#contact">Contact</a>
       </nav>
