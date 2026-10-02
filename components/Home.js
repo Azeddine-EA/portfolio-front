@@ -1,5 +1,6 @@
 import styles from "../styles/Home.module.scss";
 import ProjectCard from './ProjectCard';
+import Contact from './Contact';
 // import styles from "../styles/projectCard.module.scss";
 import {
   Accordion,
@@ -116,6 +117,10 @@ function Home() {
         <div className={styles.card}>
           <p>Soon</p>
         </div>
+    </div>
+
+    <div className={styles.contact}>
+      <Contact/>
     </div>
     </>
   

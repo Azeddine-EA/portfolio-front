@@ -1,0 +1,99 @@
+.contact {
+  min-height: calc(100vh - var(--header-height));
+  padding: 80px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  width: 100%;
+  max-width: 650px;
+  background-color: var(--bg-color-pal);
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.container h1 {
+  margin-bottom: 10px;
+  color: var(--text-white);
+  font-size: 2.5rem;
+}
+
+.intro {
+  margin-bottom: 40px;
+  color: var(--text-nav);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  label {
+    color: var(--text-white);
+    font-family: var(--font-mono);
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-white);
+    font-family: inherit;
+    font-size: 1rem;
+    outline: none;
+    transition: var(--transition-speed);
+
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    &:focus {
+      border-color: var(--text-white);
+      background: rgba(255, 255, 255, 0.08);
+    }
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 160px;
+  }
+}
+
+.button {
+  align-self: flex-start;
+  padding: 13px 28px;
+  border: none;
+  border-radius: 8px;
+  background: var(--text-white);
+  color: var(--bg-color);
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: var(--transition-speed);
+
+  &:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+  }
+}
+
+@media (max-width: 600px) {
+  .contact {
+    padding: 50px 20px;
+  }
+
+  .container h1 {
+    font-size: 2rem;
+  }
+}
+
