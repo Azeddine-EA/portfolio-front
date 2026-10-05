@@ -78,6 +78,30 @@ function Contact() {
     setLoading(false);
   }
 };
+const socialsData = [
+    {
+      name: "Linkedin",
+      img: "linkedin.svg",
+      link: "https://www.linkedin.com/in/azeddine-el-aioud-developpement-informatique-alternance/"
+    },
+    {
+      name: "Github",
+      img: "github.svg",
+      link:"https://github.com/Azeddine-EA?tab=overview&from=2026-10-01&to=2026-10-05"
+    },
+  ];
+ const SocialsContact = socialsData.map((social, i) => {
+    return (
+      <a href={social.link}>
+            <img
+        key={i}
+        className={`${styles.contact_socials_social} ${styles[`contact_socials_social_${social.name.toLowerCase()}`]}`}
+        src={social.img}
+        alt={social.name}
+      />
+        </a>
+    );
+  });
 
   return (
 
@@ -147,9 +171,14 @@ function Contact() {
             {status}
           </p>
         )}
+        <div className={styles.contact_socials}>
+      {SocialsContact}
+
+    </div>
       </div>
 
     </form>
+    
   </div>
 </main>
 

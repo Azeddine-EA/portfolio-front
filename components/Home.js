@@ -50,17 +50,29 @@ function Home() {
       img: "next.png",
     },
   ];
+  const socialsData = [
+    {
+      name: "Linkedin",
+      img: "linkedin.svg",
+      link: "https://www.linkedin.com/in/azeddine-el-aioud-developpement-informatique-alternance/"
+    },
+    {
+      name: "Github",
+      img: "github.svg",
+      link:"https://github.com/Azeddine-EA?tab=overview&from=2026-10-01&to=2026-10-05"
+    },
+  ];
 
-  const langages = langagesData.map((langage, i) => {
-    return (
-      <img
-        key={i}
-        className={`${styles.profil_right_imgLogo} ${styles[`profil_right_imgLogo_${langage.name.toLowerCase()}`]}`}
-        src={langage.img}
-        alt={langage.name}
-      />
-    );
-  });
+  // const langages = langagesData.map((langage, i) => {
+  //   return (
+  //     <img
+  //       key={i}
+  //       className={`${styles.profil_right_imgLogo} ${styles[`profil_right_imgLogo_${langage.name.toLowerCase()}`]}`}
+  //       src={langage.img}
+  //       alt={langage.name}
+  //     />
+  //   );
+  // });
   const Outils = langagesData.map((langage, i) => {
     return (
       <img
@@ -69,6 +81,30 @@ function Home() {
         src={langage.img}
         alt={langage.name}
       />
+    );
+  });
+  const Socials = socialsData.map((social, i) => {
+    return (
+      <a href={social.link}>
+            <img
+        key={i}
+        className={`${styles.profil_right_imgLogo} ${styles[`profil_right_imgLogo_${social.name.toLowerCase()}`]}`}
+        src={social.img}
+        alt={social.name}
+      />
+        </a>
+    );
+  });
+  const SocialsContact = socialsData.map((social, i) => {
+    return (
+      <a href={social.link}>
+            <img
+        key={i}
+        className={`${styles.contact} ${styles[`contact_${social.name.toLowerCase()}`]}`}
+        src={social.img}
+        alt={social.name}
+      />
+        </a>
     );
   });
     // PROJET - FETCH la bdd  exemple
@@ -107,7 +143,7 @@ function Home() {
       </div>
       <div className={styles.profil_right}>
         <img className={styles.profil_right_me} src="/pdpme.png" alt="" />
-        {langages}
+        {Socials}
       </div>
     </div> 
 

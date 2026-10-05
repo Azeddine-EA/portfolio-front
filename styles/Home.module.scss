@@ -11,7 +11,7 @@
   @media (max-width: 600px) {
     // grid-template-columns: repeat(2, 1fr);
     .profil_right {
-   display: none;
+      display: none;
 
       /* margin: 10px; */
     }
@@ -22,7 +22,7 @@
   display: flex;
   margin-top: 5%;
   margin-left: 5%;
-  &_outils{
+  &_outils {
     display: flex;
     flex-wrap: wrap;
   }
@@ -45,46 +45,40 @@
   width: 500px;
   height: 500px;
 }
+
+
 .profil_right_imgLogo {
   position: absolute;
+  // transition: transform 0.3s ease;
+
+  &_github {
+    top: 60px;
+    left: 125px;
+    animation: rotation 16s linear infinite;
+
+    &:hover {
+      scale: 1.15;
+    }
+  }
+
+  &_linkedin {
+    bottom: 140px;
+    right: 110px;
+    animation: rotation 16s linear infinite;
+
+    &:hover {
+      scale: 1.15;
+    }
+  }
 }
-.profil_right_imgLogo_js {
-  top: 300px;
-  left: 20%;
-}
-.profil_right_imgLogo_html {
-  top: 10px;
-  left: 40%;
-  transform: translateX(-50%);
-}
-.profil_right_imgLogo_next {
-  width: 50px;
-  top: 10px;
-  left: 60%;
-}
-.profil_right_imgLogo_css {
-  top: 420px;
-  left: 35%;
-}
-.profil_right_imgLogo_react {
-  top: 200px;
-  left: 70%;
-}
-.profil_right_imgLogo_node {
-  top: 190px;
-  left: 30%;
-}
-.profil_right_imgLogo_bootsrap {
-  top: 100px;
-  left: 70%;
-}
-.profil_right_imgLogo_sass {
-  top: 70px;
-  left: 25%;
-}
-.profil_right_imgLogo_tailwind {
-  top: 350px;
-  right: 15%;
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .profil_left_imgLogo {
@@ -148,8 +142,8 @@
   }
 }
 
-.card{
-    width: 100%;
+.card {
+  width: 100%;
   max-width: 380px;
   height: 550px;
   box-sizing: border-box;
@@ -174,11 +168,11 @@
     transform var(--transition-speed) ease,
     border-color var(--transition-speed) ease,
     box-shadow var(--transition-speed) ease;
-     &:hover {
-      transform: translateY(-5px);
+  &:hover {
+    transform: translateY(-5px);
 
-      // .card_img img {
-      //   transform: scale(1.05);
-      // }
-    }
+    // .card_img img {
+    //   transform: scale(1.05);
+    // }
+  }
 }

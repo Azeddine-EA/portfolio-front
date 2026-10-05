@@ -90,6 +90,7 @@
 .actions {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 20px;
 }
 
@@ -147,4 +148,33 @@
     width: 100%;
   }
 }
+.contact_socials{
 
+  display: flex;
+  // flex-direction: row-reverse;
+  // margin-top: 50px;
+  gap: 20px;
+&_social{
+  // background-color: #f3f3f3;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  background-color: var(--bg-color);
+  padding: 5px;
+  width: 50px;
+
+  @keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-0.5rem);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+  &:hover{
+      animation: bounce 0.3s linear 2;
+}
+  }
+}
