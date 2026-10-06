@@ -1,8 +1,11 @@
 
 import { useState } from "react";
 import styles from "../styles/contact.module.scss";
+import {useCallback, useEffect,} from 'react';
 
-function Contact() {
+
+function Contact({socials}) {
+  // console.log(socials);
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -11,6 +14,8 @@ function Contact() {
 
   const [status, setStatus] = useState("");
   const [loading, setLoading] = useState(false);
+  // const [socialsData, setSocialsData] = useState([]);
+
 
   const handleChange = (e) => {
     setForm({
@@ -19,7 +24,7 @@ function Contact() {
     });
   };
 
- const handleSubmit = async (e) => {
+const handleSubmit = async (e) => {
   e.preventDefault();
 
   // Vérifie si un message a déjà été envoyé
@@ -78,19 +83,17 @@ function Contact() {
     setLoading(false);
   }
 };
-const socialsData = [
-    {
-      name: "Linkedin",
-      img: "linkedin.svg",
-      link: "https://www.linkedin.com/in/azeddine-el-aioud-developpement-informatique-alternance/"
-    },
-    {
-      name: "Github",
-      img: "github.svg",
-      link:"https://github.com/Azeddine-EA?tab=overview&from=2026-10-01&to=2026-10-05"
-    },
-  ];
- const SocialsContact = socialsData.map((social, i) => {
+  // const allSocials = () => {
+  //     fetch(`http://localhost:3000/technology/socials`)
+  //       .then((response) => response.json())
+  //       .then((data) => setSocialsData(data.socials));
+  //     };
+  // useEffect(() => {
+  //         allSocials();
+
+  // }, []);
+
+const SocialsContact = socials.map((social, i) => {
     return (
       <a href={social.link}>
             <img
@@ -102,6 +105,8 @@ const socialsData = [
         </a>
     );
   });
+  
+  
 
   return (
 

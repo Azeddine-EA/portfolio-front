@@ -50,36 +50,45 @@
 .profil_right_imgLogo {
   position: absolute;
   // transition: transform 0.3s ease;
+    left: 45%;
+    top: 45%;
+    animation: rotation 32s linear infinite;
 
   &_github {
-    top: 60px;
-    left: 125px;
-    animation: rotation 16s linear infinite;
-
     &:hover {
-      scale: 1.15;
+      // scale: 1.15;
+      width: 75px;
+    }
+    
+  }
+  
+  &_linkedin {
+    animation-delay: -12s;
+    
+    &:hover {
+      // scale: 1.15;
+      width: 75px;
     }
   }
-
-  &_linkedin {
-    bottom: 140px;
-    right: 110px;
-    animation: rotation 16s linear infinite;
-
+  &_mail {
+    animation-delay: -24s;
+    
     &:hover {
-      scale: 1.15;
+      // scale: 1.15;
+      width: 75px;
     }
   }
 }
 @keyframes rotation {
-  from {
-    transform: rotate(0deg);
+ from {
+    transform: rotate(0deg) translateX(200px) rotate(0deg);
   }
 
   to {
-    transform: rotate(360deg);
+    transform: rotate(360deg) translateX(200px) rotate(-360deg) ;
   }
 }
+
 
 .profil_left_imgLogo {
   display: flex;

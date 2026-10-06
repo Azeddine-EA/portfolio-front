@@ -12,57 +12,21 @@ import {useCallback, useEffect, useState} from 'react';
 
 function Home() {
   const [projectData, setProjectData] = useState([]);
-  const langagesData = [
-    {
-      name: "Js",
-      img: "js.svg",
-    },
-    {
-      name: "Html",
-      img: "html.svg",
-    },
-    {
-      name: "Css",
-      img: "css.svg",
-    },
-    {
-      name: "React",
-      img: "react.svg",
-    },
-    {
-      name: "Node",
-      img: "node.svg",
-    },
-    {
-      name: "Bootsrap",
-      img: "bootsrap.svg",
-    },
-    {
-      name: "Sass",
-      img: "sass.svg",
-    },
-    {
-      name: "Tailwind",
-      img: "tailwind.svg",
-    },
-    {
-      name: "Next",
-      img: "next.png",
-    },
-  ];
-  const socialsData = [
-    {
-      name: "Linkedin",
-      img: "linkedin.svg",
-      link: "https://www.linkedin.com/in/azeddine-el-aioud-developpement-informatique-alternance/"
-    },
-    {
-      name: "Github",
-      img: "github.svg",
-      link:"https://github.com/Azeddine-EA?tab=overview&from=2026-10-01&to=2026-10-05"
-    },
-  ];
-
+  const [langagesData, setLangagesData] = useState([]);
+  const [socialsData, setSocialsData] = useState([]);
+  const allLanguages = () => {
+      fetch(`http://localhost:3000/technology/languages`)
+        .then((response) => response.json())
+        .then((data) => setLangagesData(data.languages));
+      };
+      
+      const allSocials = () => {
+        fetch(`http://localhost:3000/technology/socials`)
+        .then((response) => response.json())
+        .then((data) => setSocialsData(data.socials));
+      };
+    
+        
   // const langages = langagesData.map((langage, i) => {
   //   return (
   //     <img
@@ -95,18 +59,18 @@ function Home() {
         </a>
     );
   });
-  const SocialsContact = socialsData.map((social, i) => {
-    return (
-      <a href={social.link}>
-            <img
-        key={i}
-        className={`${styles.contact} ${styles[`contact_${social.name.toLowerCase()}`]}`}
-        src={social.img}
-        alt={social.name}
-      />
-        </a>
-    );
-  });
+  // const SocialsContact = socialsData.map((social, i) => {
+  //   return (
+  //     <a href={social.link}>
+  //           <img
+  //       key={i}
+  //       className={`${styles.contact} ${styles[`contact_${social.name.toLowerCase()}`]}`}
+  //       src={social.img}
+  //       alt={social.name}
+  //     />
+  //       </a>
+  //   );
+  // });
     // PROJET - FETCH la bdd  exemple
   const allProject = () => {
       fetch(`http://localhost:3000/project/read`)
@@ -116,11 +80,14 @@ function Home() {
 
   useEffect(() => {
     allProject();
+    allLanguages();
+    allSocials();
+
   }, []);
 
   const projetcs = projectData.map((project, i)=>
     project ? <ProjectCard key={i} {...project}/>: null  );
-
+// console.log(socialsData);
   return (
     <>
     <div className={styles.profil}>
@@ -156,7 +123,7 @@ function Home() {
     </div>
 
     <div className={styles.contact}>
-      <Contact/>
+      <Contact socials={socialsData}/>
     </div>
     </>
   
