@@ -161,6 +161,8 @@
   background-color: var(--bg-color);
   padding: 5px;
   width: 50px;
+  transition: var(--transition-speed);
+
 
   @keyframes bounce {
   0% {
@@ -174,7 +176,10 @@
   }
 }
   &:hover{
-      animation: bounce 0.3s linear 2;
+      // animation: bounce 0.3s linear 2;
+    transform: translateY(-2px);
+    opacity: 0.9;
+    border-color: #f3f3f3;
 }
   }
 }
