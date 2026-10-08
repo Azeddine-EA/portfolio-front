@@ -1,10 +1,78 @@
 import { useState } from "react";
 import styles from "../styles/connexion.module.scss";
-
+import { useDispatch } from "react-redux";
+import { login } from "../reducer/user";
 
 function Connexion() {
-  const [mail, setMail] = useState('');
-	const [password, setPassword] = useState('');
-  
+  const [email, setEmail] = useState("");
+  const [pwd, setPwd] = useState("");
+	const [errorMessage, setErrorMessage] = useState('');
+
+  const [isLoading, setIsLoading] = useState(false);
+  const dispatch = useDispatch();
+
+  const handleLogin = async () => {
+    setErrorMessage("");
+
+    setIsLoading(true);
+    try {
+      const response = await fetch("http://localhost:3000/user/signin", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, pwd }),
+      });
+      const data = await response.json();
+      console.log(data);
+      
+      if (data.result) {
+        dispatch(
+          login({
+            token: data.token,
+            name: data.name,
+            email: data.email,
+          }),
+        );
+      } else {
+        setErrorMessage(data.error || "Identifiants incorrects.");
+      }
+    } catch (error) {
+      console.error("Erreur lors de la connexion:", error);
+      setErrorMessage("Erreur de connexion au serveur.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+  return (
+    <div className={styles.connexion}>
+      <div className={styles.connexion_form}>
+        <div className={styles.connexion_form_email}>
+          <label htmlFor="email">Email</label>
+          <input
+              type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            // onKeyDown={onKeyPressHandler}
+            placeholder="votre@email.com"
+            disabled={isLoading}
+          />
+        </div>
+        <div className={styles.connexion_form_email}>
+          <label htmlFor="pwd">Mot de passe</label>
+						<input
+							type="password"
+							value={pwd}
+							onChange={(e) => setPwd(e.target.value)}
+							// onKeyDown={onKeyPressHandler}
+							placeholder="••••••••"
+							disabled={isLoading}
+						/>
+        </div>
+        	<button onClick={handleLogin} disabled={isLoading}>
+            
+						{isLoading ? 'Connexion...' : 'Se connecter'}
+					</button>
+      </div>
+    </div>
+  );
 }
-export default Contact;
+export default Connexion;

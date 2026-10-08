@@ -1,5 +1,7 @@
+import {useDispatch, useSelector} from 'react-redux';
 
 export default function Header() {
+  const user = useSelector((state) => state.user);
 
   return (
     <header className="header">
@@ -9,6 +11,9 @@ export default function Header() {
       </a>
 
       <nav className="header-nav">
+            {user.token && (
+                  <p>Je suis connecté</p>
+                )}
         <a href="#profil">Profil</a>
         {/* <a href="#parcours">Parcours</a> */}
         <a href="#projets">Projets</a>

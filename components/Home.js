@@ -1,6 +1,9 @@
 import styles from "../styles/Home.module.scss";
 import ProjectCard from './ProjectCard';
 import Contact from './Contact';
+import Connexion from './Connexion';
+// import Connexion from "../components/Connexion";
+import { useRouter } from "next/router";
 // import styles from "../styles/projectCard.module.scss";
 import {
   Accordion,
@@ -9,8 +12,13 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import {useCallback, useEffect, useState} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 
-function Home() {
+
+
+function Home({ showConnexion }) {
+  const router = useRouter();
+  const user = useSelector((state) => state.user);
   const [projectData, setProjectData] = useState([]);
   const [langagesData, setLangagesData] = useState([]);
   const [socialsData, setSocialsData] = useState([]);
@@ -88,9 +96,11 @@ function Home() {
   const projetcs = projectData.map((project, i)=>
     project ? <ProjectCard key={i} {...project}/>: null  );
 // console.log(socialsData);
+console.log(router.pathname);
   return (
     <>
     <div className={styles.profil}>
+        {showConnexion && <Connexion />}
       <div className={styles.profil_left}>
         <div className={styles.profil_left_text}>
           <h2>Qui suis-je</h2>
@@ -125,6 +135,7 @@ function Home() {
     <div className={styles.contact}>
       <Contact socials={socialsData}/>
     </div>
+  
     </>
   
   );
