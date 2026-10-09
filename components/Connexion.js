@@ -1,12 +1,13 @@
 import { useState } from "react";
 import styles from "../styles/connexion.module.scss";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { login } from "../reducer/user";
 
 function Connexion() {
   const [email, setEmail] = useState("");
   const [pwd, setPwd] = useState("");
-	const [errorMessage, setErrorMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState("");
+  const user = useSelector((state) => state.user);
 
   const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
@@ -23,7 +24,7 @@ function Connexion() {
       });
       const data = await response.json();
       console.log(data);
-      
+
       if (data.result) {
         dispatch(
           login({
@@ -32,6 +33,8 @@ function Connexion() {
             email: data.email,
           }),
         );
+        setEmail("");
+        setPwd("");
       } else {
         setErrorMessage(data.error || "Identifiants incorrects.");
       }
@@ -43,36 +46,39 @@ function Connexion() {
     }
   };
   return (
-    <div className={styles.connexion}>
-      <div className={styles.connexion_form}>
-        <div className={styles.connexion_form_email}>
-          <label htmlFor="email">Email</label>
-          <input
-              type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            // onKeyDown={onKeyPressHandler}
-            placeholder="votre@email.com"
-            disabled={isLoading}
-          />
+    <>
+      {!user.token && (
+        <div className={styles.connexion}>
+          <div className={styles.connexion_form}>
+            <div className={styles.connexion_form_email}>
+              <label htmlFor="email">Email</label>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                // onKeyDown={onKeyPressHandler}
+                placeholder="votre@email.com"
+                disabled={isLoading}
+              />
+            </div>
+            <div className={styles.connexion_form_email}>
+              <label htmlFor="pwd">Mot de passe</label>
+              <input
+                type="password"
+                value={pwd}
+                onChange={(e) => setPwd(e.target.value)}
+                // onKeyDown={onKeyPressHandler}
+                placeholder="••••••••"
+                disabled={isLoading}
+              />
+            </div>
+            <button onClick={handleLogin} disabled={isLoading}>
+              {isLoading ? "Connexion..." : "Se connecter"}
+            </button>
+          </div>
         </div>
-        <div className={styles.connexion_form_email}>
-          <label htmlFor="pwd">Mot de passe</label>
-						<input
-							type="password"
-							value={pwd}
-							onChange={(e) => setPwd(e.target.value)}
-							// onKeyDown={onKeyPressHandler}
-							placeholder="••••••••"
-							disabled={isLoading}
-						/>
-        </div>
-        	<button onClick={handleLogin} disabled={isLoading}>
-            
-						{isLoading ? 'Connexion...' : 'Se connecter'}
-					</button>
-      </div>
-    </div>
+      )}
+    </>
   );
 }
 export default Connexion;
