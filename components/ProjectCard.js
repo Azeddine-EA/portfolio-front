@@ -62,12 +62,14 @@ const deleteProject = async (idProject) => {
             Voir le site <span>→</span>{" "}
           </a>
         </div>
-           <button
+        {user.token &&(
+             <button
           onClick={() => deleteProject(props._id)}
           className={styles.card_button}
         >
           supprimer
         </button>
+        )}
       </div>
 
   );

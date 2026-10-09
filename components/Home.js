@@ -93,13 +93,13 @@ function Home({ showConnexion }) {
       .then((response) => response.json())
       .then((data) => setProjectData(data.projects));
   };
-// refresh apres la suppression depuis projectCard
+  // refresh apres la suppression depuis projectCard
   const refreshProjects = () => {
-  allProject();
-};
+    allProject();
+  };
 
   const addProject = () => {
-    setNewProject(true);
+    setNewProject((prev) => !prev);
   };
 
   useEffect(() => {
@@ -109,57 +109,55 @@ function Home({ showConnexion }) {
   }, []);
 
   const projetcs = projectData.map((project, i) =>
-    project ? <ProjectCard key={i} {...project} refreshProjects={refreshProjects} /> : null,
+    project ? (
+      <ProjectCard key={i} {...project} refreshProjects={refreshProjects} />
+    ) : null,
   );
 
   const handleCreateProject = async () => {
-  try {
-    const response = await fetch("http://localhost:3000/project/create", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name,
-        img,
-        desc,
-        link,
-        language: outils.join(","),
-        startDate: dateDebut,
-        endDate: dateFin,
-      }),
-    });
+    try {
+      const response = await fetch("http://localhost:3000/project/create", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          img,
+          desc,
+          link,
+          language: outils.join(","),
+          startDate: dateDebut,
+          endDate: dateFin,
+        }),
+      });
 
-    const data = await response.json();
+      const data = await response.json();
 
-    if (data.result) {
-      console.log("Projet créé :", data.project);
+      if (data.result) {
+        console.log("Projet créé :", data.project);
 
-      // Réinitialiser le formulaire
-      setName("");
-      setImg("");
-      setDesc("");
-      setLink("");
-      setOutils([]);
-      setDateDebut("");
-      setDateFin("");
-      setNewProject(false);
+        // Réinitialiser le formulaire
+        setName("");
+        setImg("");
+        setDesc("");
+        setLink("");
+        setOutils([]);
+        setDateDebut("");
+        setDateFin("");
+        setNewProject(false);
 
-      // Actualiser la liste des projets
-      allProject();
-    } else {
-      console.error("Erreur :", data.error);
-      alert(data.error || "Impossible de créer le projet.");
+        // Actualiser la liste des projets
+        allProject();
+      } else {
+        console.error("Erreur :", data.error);
+        alert(data.error || "Impossible de créer le projet.");
+      }
+    } catch (error) {
+      console.error("Erreur lors de la création :", error);
+      alert("Impossible de contacter le serveur.");
     }
-  } catch (error) {
-    console.error("Erreur lors de la création :", error);
-    alert("Impossible de contacter le serveur.");
-  }
-};
-
-
-
-
+  };
 
   // console.log(socialsData);
   console.log(router.pathname);
@@ -209,99 +207,106 @@ function Home({ showConnexion }) {
 
         <>
           {newProject && (
-            <div className={styless.connexion_form}>
-              <div className={styless.connexion_form_email}>
-                <label htmlFor="name">Nom</label>
-                <input
-                  type="text"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  placeholder="Nom du projet"
-                />
-              </div>
-              <div className={styless.connexion_form_email}>
-                <label htmlFor="desc">Description</label>
-                <input
-                  type="text"
-                  value={desc}
-                  onChange={(e) => setDesc(e.target.value)}
-                  placeholder="Description du projet"
-                />
-              </div>
-              <div className={styless.connexion_form_email}>
-                <label htmlFor="desc">Image</label>
-                <input
-                  type="text"
-                  value={img}
-                  onChange={(e) => setImg(e.target.value)}
-                  placeholder="url image du projet"
-                />
-              </div>
-              <div className={styless.connexion_form_email}>
-                <label htmlFor="lien">Lien</label>
-                <input
-                  type="text"
-                  value={link}
-                  onChange={(e) => setLink(e.target.value)}
-                  placeholder="url image du projet"
-                />
-              </div>
-              <div className={styless.connexion_form}>
-                <p>Langages et outils</p>
+          <>
+                <div className={styless.connexion_form}>
+                <button onClick={addProject}>X</button>
+                <div className={styless.connexion_form_email}>
+                  <label htmlFor="name">Nom</label>
+                  <input
+                    type="text"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    placeholder="Nom du projet"
+                  />
+                </div>
+                <div className={styless.connexion_form_email}>
+                  <label htmlFor="desc">Description</label>
+                  <input
+                    type="text"
+                    value={desc}
+                    onChange={(e) => setDesc(e.target.value)}
+                    placeholder="Description du projet"
+                  />
+                </div>
+                <div className={styless.connexion_form_email}>
+                  <label htmlFor="desc">Image</label>
+                  <input
+                    type="text"
+                    value={img}
+                    onChange={(e) => setImg(e.target.value)}
+                    placeholder="url image du projet"
+                  />
+                </div>
+                <div className={styless.connexion_form_email}>
+                  <label htmlFor="lien">Lien</label>
+                  <input
+                    type="text"
+                    value={link}
+                    onChange={(e) => setLink(e.target.value)}
+                    placeholder="url image du projet"
+                  />
+                </div>
+                <div className={styless.connexion_form_langages}>
+                  <p>Langages et outils</p>
 
-                {langagesData.map((langage) => (
-                  <label key={langage._id}>
-                    <input
-                      type="checkbox"
-                      checked={outils.includes(langage.img)}
-                      onChange={(e) => {
-                        if (e.target.checked) {
-                          setOutils((prev) => [...prev, langage.img]);
-                        } else {
-                          setOutils((prev) =>
-                            prev.filter((id) => url !== langage.img),
-                          );
-                        }
-                      }}
-                    />
+                  <div className={styless.connexion_form_langages_liste}>
+                    {langagesData.map((langage) => (
+                      <label
+                        key={langage._id}
+                        className={styless.connexion_form_langages_item}
+                      >
+                        <input
+                          type="checkbox"
+                          checked={outils.includes(langage.name)}
+                          onChange={(e) => {
+                            if (e.target.checked) {
+                              setOutils((prev) => [...prev, langage.name]);
+                            } else {
+                              setOutils((prev) =>
+                                prev.filter((url) => url !== langage.name),
+                              );
+                            }
+                          }}
+                          className={styless.connexion_form_langage}
+                        />
 
-                    {langage.name}
-                  </label>
-                ))}
-              </div>
-              <div className={styless.connexion_form_email}>
-                <label htmlFor="dateDebut">Date de début</label>
-                <input
-                  id="dateDebut"
-                  type="date"
-                  value={dateDebut}
-                  onChange={(e) => setDateDebut(e.target.value)}
-                />
-              </div>
+                        <span>{langage.name}</span>
+                      </label>
+                    ))}
+                  </div>
+                </div>
+                <div className={styless.connexion_form_email}>
+                  <label htmlFor="dateDebut">Date de début</label>
+                  <input
+                    id="dateDebut"
+                    type="date"
+                    value={dateDebut}
+                    onChange={(e) => setDateDebut(e.target.value)}
+                  />
+                </div>
 
-              <div className={styless.connexion_form_email}>
-                <label htmlFor="dateFin">Date de fin</label>
-                <input
-                  id="dateFin"
-                  type="date"
-                  value={dateFin}
-                  onChange={(e) => setDateFin(e.target.value)}
-                  min={dateDebut || undefined}
-                />
+                <div className={styless.connexion_form_email}>
+                  <label htmlFor="dateFin">Date de fin</label>
+                  <input
+                    id="dateFin"
+                    type="date"
+                    value={dateFin}
+                    onChange={(e) => setDateFin(e.target.value)}
+                    min={dateDebut || undefined}
+                  />
+                </div>
+                <button onClick={handleCreateProject}>Valider</button>
               </div>
-              <button
-                onClick={handleCreateProject}
-              >Valider</button>
-            </div>
+          </>
           )}
-        </>
+            </>
       </div>
 
-      <div className={styles.contact}>
-        <Contact socials={socialsData} />
-      </div>
-    </>
-  );
+        <div className={styles.contact}>
+          <Contact socials={socialsData} />
+        </div>
+      </>
+      );
 }
 
-export default Home;
+      export default Home;
