@@ -1,0 +1,18 @@
+.info {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  // width: 100vw;
+  margin: 10px;
+  &_projet {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: color-mix(in srgb, var(--bg-color-pal) 90%, transparent);
+    color: rgb(255, 255, 255);
+    padding: 10px;
+    border-radius: 5px;
+    border: solid 1px gray;
+  }
+}

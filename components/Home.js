@@ -2,6 +2,8 @@ import styles from "../styles/Home.module.scss";
 import styless from "../styles/connexion.module.scss";
 
 import ProjectCard from "./ProjectCard";
+import Info from "./info.js";
+
 import Contact from "./Contact";
 import Connexion from "./Connexion";
 // import Connexion from "../components/Connexion";
@@ -159,7 +161,7 @@ function Home({ showConnexion }) {
     }
   };
 
-  // console.log(socialsData);
+  console.log(projectData);
   console.log(router.pathname);
   return (
     <>
@@ -189,7 +191,9 @@ function Home({ showConnexion }) {
           {Socials}
         </div>
       </div>
-
+      <div className={styles.Info}>
+        <Info {... projectData}/>
+      </div>
       <div className={styles.cards}>
         <h2>Projets</h2>
         {projetcs}
@@ -207,8 +211,8 @@ function Home({ showConnexion }) {
 
         <>
           {newProject && (
-          <>
-                <div className={styless.connexion_form}>
+            <>
+              <div className={styless.connexion_form}>
                 <button onClick={addProject}>X</button>
                 <div className={styless.connexion_form_email}>
                   <label htmlFor="name">Nom</label>
@@ -297,16 +301,16 @@ function Home({ showConnexion }) {
                 </div>
                 <button onClick={handleCreateProject}>Valider</button>
               </div>
-          </>
-          )}
             </>
+          )}
+        </>
       </div>
 
-        <div className={styles.contact}>
-          <Contact socials={socialsData} />
-        </div>
-      </>
-      );
+      <div className={styles.contact}>
+        <Contact socials={socialsData} />
+      </div>
+    </>
+  );
 }
 
-      export default Home;
+export default Home;
