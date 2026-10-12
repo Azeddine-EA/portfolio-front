@@ -57,12 +57,15 @@ function Home({ showConnexion }) {
   // });
   const Outils = langagesData.map((langage, i) => {
     return (
-      <img
-        key={i}
-        className={`${styles.profil_left_imgLogo} ${styles[`profil_left_imgLogo_${langage.name.toLowerCase()}`]}`}
-        src={langage.img}
-        alt={langage.name}
-      />
+      <div className={styles.profil_left_outil}>
+        <img
+          key={i}
+          className={`${styles.profil_left_imgLogo} ${styles[`profil_left_imgLogo_${langage.name.toLowerCase()}`]}`}
+          src={langage.img}
+          alt={langage.name}
+        />
+        <h3 className={styles.profil_left_outils_name}>{langage.name}</h3>
+      </div>
     );
   });
   const Socials = socialsData.map((social, i) => {
@@ -191,8 +194,15 @@ function Home({ showConnexion }) {
           {Socials}
         </div>
       </div>
-      <div className={styles.Info}>
-        <Info {... projectData}/>
+      <div className={styles.infos}>
+       <div className={styles.infos_title}>
+         <h4>
+          Mon Expertise & Résultats 
+        </h4>
+        <p>     Découvrez ci-dessous la mise en valeur
+          harmonieuse de vos 5 informations.</p>
+       </div>
+        <Info {...projectData} />
       </div>
       <div className={styles.cards}>
         <h2>Projets</h2>

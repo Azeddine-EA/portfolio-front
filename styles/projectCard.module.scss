@@ -4,13 +4,14 @@
   max-width: 380px;
   height: 550px;
   box-sizing: border-box;
+  
   overflow: hidden;
 
   display: flex;
   flex-direction: column;
 
   background: var(--bg-color-pal);
-  border: 1px solid rgba(240, 208, 216, 0.25);
+  border: 1px solid var(--bg-border);
   border-radius: 12px;
 
   font-family: var(--font-mono);

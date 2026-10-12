@@ -1,18 +1,118 @@
 .info {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  // width: 100vw;
-  margin: 10px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin: 30px;
+  color: white;
+  width: 70vw;
+  margin-top: 100px;
+
   &_projet {
+    position: relative;
+    overflow: hidden;
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
-    background-color: color-mix(in srgb, var(--bg-color-pal) 90%, transparent);
-    color: rgb(255, 255, 255);
-    padding: 10px;
-    border-radius: 5px;
-    border: solid 1px gray;
+    align-items: flex-start;
+    gap: 12px;
+
+    padding: 24px;
+    border-radius: 17px;
+    border: 1px solid rgba(220, 70, 110, 0.24);
+
+    background: linear-gradient(
+      135deg,
+      rgba(105, 38, 55, 0.34),
+      rgba(49, 12, 24, 0.48)
+    );
+
+    backdrop-filter: blur(12px);
+
+    transition:
+      transform 0.3s ease,
+      border-color 0.3s ease,
+      box-shadow 0.3s ease;
+
+    h3 {
+      margin: 0;
+      font-size: 1.15rem;
+      font-weight: 650;
+    }
+
+    p {
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    p:last-child {
+      color: #c9a5ad;
+      font-size: 0.9rem;
+    }
+
+    &:hover {
+      transform: translateY(-4px);
+      border-color: var(--bg-border);
+
+      box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.15),
+        0 0 20px var(--bg-border);
+    }
+
+    // Première carte : projets
+    &:nth-child(1) {
+      grid-column: 1;
+      grid-row: 1 / span 2;
+      min-height: 320px;
+
+      p:nth-of-type(1) {
+        font-size: 3.5rem;
+        font-weight: 750;
+        letter-spacing: -2px;
+        color: #f5f0f2;
+      }
+    }
+
+    // Stack moderne
+    &:nth-child(2) {
+      grid-column: 2 / span 2;
+    }
+
+    // Responsive design
+    &:nth-child(3) {
+      grid-column: 2 / span 2;
+    }
+
+    // Développement Full Stack
+    &:nth-child(4) {
+      grid-column: 1 / span 2;
+    }
+
+    // Qualité du code
+    &:nth-child(5) {
+      grid-column: 3;
+    }
+  }
+}
+
+@media (max-width: 750px) {
+  .info {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin: 15px;
+
+    &_projet {
+      grid-column: auto !important;
+      grid-row: auto !important;
+      min-height: 0 !important;
+      padding: 18px;
+
+      &:nth-child(1) p:nth-of-type(1) {
+        font-size: 2.5rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .info {
+    grid-template-columns: 1fr;
   }
 }
