@@ -6,7 +6,11 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  background-color: var(--bg-color-pal);
+  &_btn{
+    color: white;
+    background-color: red;
+  }
+  // background-color: var(--bg-color-pal);
 }
 
 .container {
@@ -23,7 +27,7 @@
 }
 
 
-.intro {
+.contact_title {
   margin-bottom: 40px;
   color: var(--text-nav);
   font-size: 1rem;
@@ -53,13 +57,13 @@
   }
 
   input,
-  textarea {
+  textarea, select, option {
     width: 100%;
     padding: 14px 16px;
     border: none;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     // border-radius: 8px;
-    background-color: var(--bg-color-pal);
+    background-color: transparent;
     color: var(--text-white);
     font-family: var(--font-mono);
     font-size: 0.9rem;
@@ -81,6 +85,20 @@
     resize: vertical;
     min-height: 180px;
   }
+  select {
+  cursor: pointer;
+
+  option {
+    background-color: #1e1e1e;
+    color: var(--text-white);
+    padding: 10px;
+  }
+}
+}
+.selects{
+  display: flex;
+  gap: 25px;
+  margin-bottom: 20px;
 }
 
 .row + .field {

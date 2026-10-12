@@ -33,6 +33,7 @@ export default function Header() {
         <a href="#profil">Profil</a>
         {/* <a href="#parcours">Parcours</a> */}
         <a href="#projets">Projets</a>
+        <a href="#infos">Info</a>
         <a href="#contact">Contact</a>
         {user.token && <button onClick={openDisconnect}>Se déconnecter</button>}
         {disconnect && (

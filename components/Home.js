@@ -57,14 +57,14 @@ function Home({ showConnexion }) {
   // });
   const Outils = langagesData.map((langage, i) => {
     return (
-      <div className={styles.profil_left_outil}>
+      <div className={styles.profil_outil}>
         <img
           key={i}
           className={`${styles.profil_left_imgLogo} ${styles[`profil_left_imgLogo_${langage.name.toLowerCase()}`]}`}
           src={langage.img}
           alt={langage.name}
         />
-        <h3 className={styles.profil_left_outils_name}>{langage.name}</h3>
+        <h3 className={`${styles.profil_left_outils_name} ${styles[`profil_left_imgLogo_${langage.name.toLowerCase()}`]}`}>{langage.name}</h3>
       </div>
     );
   });
@@ -170,41 +170,53 @@ function Home({ showConnexion }) {
     <>
       <div className={styles.profil}>
         {showConnexion && <Connexion />}
-        <div className={styles.profil_left}>
-          <div className={styles.profil_left_text}>
-            <h2>Qui suis-je</h2>
-            <br />
-            <p>
-              Bonjour, je suis Azeddine EL AIOUD développeur web full stack
-              ReackJS/NextJs, titulaire d’un Bac +3.
-              <br />
-              Je suis actuellement à la recherche de nouvelles missions, que ce
-              soit en freelance ou en emploi, afin de mettre mes compétences au
-              service de projets variés et de relever de nouveaux défis.
-            </p>
-            <br />
-            <p>Mes Principaux Outils:</p>
-            <br />
-            <div className={styles.profil_left_outils}>{Outils}</div>
+        <div className={styles.profil_text}>
+          <div className={styles.profil_text_head}>
+            <h3 className={styles.profil_text_head_diplome}>
+              Déveleppeur web Full Stack - Bac+3
+            </h3>
+            <h3 className={styles.profil_text_head_loc}>📍Île-de-France & Télétravail</h3>
           </div>
-          <div className={styles.profil_left_btn}></div>
+          <p className={styles.profil_text_title}>Qui suis-je</p>
+          <h3 className={styles.profil_text_name}>
+            Bonjour,je suis <br />
+            Azeddine EL AIOUD
+          </h3>
+          <p className={styles.profil_text_desc}>
+            Développeur passionné spécialisé dans l’écosystème{" "}
+            <span>ReactJS & Next.js</span>. <br /> Je conçois des applications
+            web modernes, performantes et scalables, que ce soit en freelance ou
+            pour renforcer une équipe technique en entreprise.
+          </p>
+          <div className={styles.profil_text_btn}>
+             <a href="#contact">Me contacter</a>
+            
+              <a href="/cv.pdf" download>Télécharger CV</a>
+            
+          </div>
+          <div className={styles.profil_bottom}>
+            <h3>
+              MES PRINCIPAUX OUTILS <span>Désolé</span>
+            </h3>
+            <div className={styles.profil_outils}>{Outils}</div>
+          </div>
         </div>
         <div className={styles.profil_right}>
           <img className={styles.profil_right_me} src="/pdpme.png" alt="" />
           {Socials}
         </div>
       </div>
-      <div className={styles.infos}>
-       <div className={styles.infos_title}>
-         <h4>
-          Mon Expertise & Résultats 
-        </h4>
-        <p>     Découvrez ci-dessous la mise en valeur
-          harmonieuse de vos 5 informations.</p>
-       </div>
+      <div className={styles.infos} id="infos">
+        <div className={styles.infos_title}>
+          <h4>Mon Expertise & Résultats</h4>
+          <p>
+            {" "}
+            En résumé : mes points clés en un coup d’œil.
+          </p>
+        </div>
         <Info {...projectData} />
       </div>
-      <div className={styles.cards}>
+      <div className={styles.cards} id="projets">
         <h2>Projets</h2>
         {projetcs}
         {!user.token ? (
@@ -316,7 +328,7 @@ function Home({ showConnexion }) {
         </>
       </div>
 
-      <div className={styles.contact}>
+      <div className={styles.contact} id="contact">
         <Contact socials={socialsData} />
       </div>
     </>

@@ -8,6 +8,27 @@
   margin-top: 100px;
 
   &_projet {
+   &_head{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+     &_title {
+      background-color: color-mix(in srgb, var(--bg-border) 30%, transparent);
+
+      padding: 5px 10px 5px ;
+      border: 1px solid var(--bg-border);
+      border-radius: 20px;
+    }
+    &_logo{
+      width:34px;
+    border: 1px solid rgba(220, 70, 110, 0.24);
+    padding: 5px;
+     background-color: color-mix(in srgb, var(--bg-border) 30%, transparent);
+      border-radius: 5px;
+
+
+    }
+   }
     position: relative;
     overflow: hidden;
     display: flex;
@@ -15,7 +36,7 @@
     align-items: flex-start;
     gap: 12px;
 
-    padding: 24px;
+    padding: 20px;
     border-radius: 17px;
     border: 1px solid rgba(220, 70, 110, 0.24);
 
@@ -62,6 +83,8 @@
       grid-column: 1;
       grid-row: 1 / span 2;
       min-height: 320px;
+      animation: entrerGauche 2s ease-out both;
+
 
       p:nth-of-type(1) {
         font-size: 3.5rem;
@@ -74,24 +97,93 @@
     // Stack moderne
     &:nth-child(2) {
       grid-column: 2 / span 2;
+      animation: entrerHaut 3s ease-out both;
+
     }
 
     // Responsive design
     &:nth-child(3) {
       grid-column: 2 / span 2;
+      animation: entrerDroite 2s ease-out both;
+
     }
 
     // Développement Full Stack
     &:nth-child(4) {
       grid-column: 1 / span 2;
+      animation: entrerBas 2s ease-out both;
+
     }
 
     // Qualité du code
     &:nth-child(5) {
       grid-column: 3;
+      animation: entrerBas 2s ease-out both;
+
     }
   }
 }
+
+// Animation loading -----
+@keyframes apparition {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes entrerGauche {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes entrerDroite {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes entrerHaut {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes entrerBas {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 
 @media (max-width: 750px) {
   .info {
@@ -116,3 +208,7 @@
     grid-template-columns: 1fr;
   }
 }
+
+
+
+
