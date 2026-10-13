@@ -1,10 +1,13 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { logout } from "../../reducer/user";
+// import '../../styles/header.module.scss';
+
 
 export default function Header() {
   const user = useSelector((state) => state.user);
   const [disconnect, setDisconnect] = useState(false);
+  const [active, setActive] = useState(false);
   const dispatch = useDispatch();
 
   const openDisconnect = () => {
@@ -20,6 +23,12 @@ export default function Header() {
     dispatch(logout());
   };
 
+    const changeNav = () => {
+    setActive(!active);
+
+  };
+  
+
   return (
     <header className="header">
       <a href="#" className="header-brand">
@@ -30,6 +39,35 @@ export default function Header() {
       </a>
 
       <nav className="header-nav">
+        <a href="#profil">Profil</a>
+        {/* <a href="#parcours">Parcours</a> */}
+        <a href="#projets">Projets</a>
+        <a href="#infos">Info</a>
+        <a href="#contact">Contact</a>
+        {user.token && <button onClick={openDisconnect}>Se déconnecter</button>}
+        {disconnect && (
+          <div>
+            <button
+              onClick={() => {
+                letsDisconnect();
+                closeDisconnect();
+              }}
+            >
+              Confirmer
+            </button>
+            <button onClick={closeDisconnect}>Annuler</button>
+          </div>
+        )}
+      </nav>
+    {!active ? (
+            <button onClick={changeNav} className="header-btn_nav" >
+               <img src="/bars.svg" alt="menu bars" />
+              </button>
+    ):(      <button onClick={changeNav} className="header-btn_nav" >
+               <img src="/xmark.svg" alt="menu bars" />
+              </button>)}
+
+      <nav className={active ? "header-nav_side_on" : "header-nav_side_off"}>
         <a href="#profil">Profil</a>
         {/* <a href="#parcours">Parcours</a> */}
         <a href="#projets">Projets</a>

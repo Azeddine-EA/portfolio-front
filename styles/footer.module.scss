@@ -1,0 +1,238 @@
+
+.footer {
+  position: relative;
+  overflow: hidden;
+  background-color: #18070d;
+  color: #ffffff;
+  border-top: 1px solid rgba(179, 76, 117, 0.25);
+
+  // Motifs décoratifs en arrière-plan
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("/bg-project.png");
+    background-size: cover;
+    background-position: center;
+    opacity: 0.08;
+    pointer-events: none;
+  }
+
+  &_container {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 50px 30px 20px;
+  }
+
+  &_top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    text-align: center;
+    padding-bottom: 35px;
+  }
+
+  &_identity {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-align: left;
+
+    h2 {
+      margin: 0;
+      font-size: 1.3rem;
+      font-weight: 600;
+    }
+
+    p {
+      margin: 5px 0 0;
+      color: #c6a6b2;
+      font-size: 0.9rem;
+    }
+  }
+
+  &_logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    color: #ffffff;
+    background: #6e1739;
+    border: 1px solid rgba(231, 161, 188, 0.3);
+    border-radius: 12px;
+  }
+
+  &_description {
+    max-width: 500px;
+    margin: 0;
+    color: #e0cbd3;
+    line-height: 1.7;
+  }
+
+  &_socials {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+
+    a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 18px;
+      color: #f5eaf0;
+      text-decoration: none;
+      background: rgba(110, 23, 57, 0.3);
+      border: 1px solid rgba(179, 76, 117, 0.25);
+      border-radius: 8px;
+      transition:
+        background-color 0.3s ease,
+        border-color 0.3s ease,
+        transform 0.3s ease;
+
+      svg {
+        color: #e7a1bc;
+      }
+
+      &:hover {
+        background-color: rgba(110, 23, 57, 0.65);
+        border-color: #b34c75;
+        transform: translateY(-3px);
+      }
+    }
+  }
+
+  &_availability {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    color: #d9b8c5;
+    font-size: 0.9rem;
+
+    svg {
+      color: #e7a1bc;
+      flex-shrink: 0;
+    }
+  }
+
+  &_nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 25px 0;
+    border-top: 1px solid rgba(179, 76, 117, 0.2);
+
+    a {
+      color: #c6a6b2;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: #ffffff;
+      }
+    }
+  }
+
+  &_bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(179, 76, 117, 0.2);
+
+    p {
+      margin: 0;
+    }
+
+    p,
+    span,
+    a {
+      color: #a98b97;
+      font-size: 0.8rem;
+    }
+  }
+
+  &_bottom_links {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+
+    a {
+      text-decoration: none;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: #ffffff;
+      }
+    }
+  }
+
+  &_top_button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    color: #ffffff !important;
+    background: #6e1739;
+    border: 1px solid rgba(231, 161, 188, 0.3);
+    border-radius: 8px;
+    text-decoration: none;
+    transition:
+      background-color 0.3s ease,
+      transform 0.3s ease;
+
+    &:hover {
+      background-color: #92264f;
+      transform: translateY(-3px);
+    }
+  }
+}
+
+// Adaptation mobile
+@media (max-width: 600px) {
+  .footer {
+    &_container {
+      padding: 35px 18px 20px;
+    }
+
+    &_identity {
+      h2 {
+        font-size: 1.1rem;
+      }
+    }
+
+    &_socials {
+      width: 100%;
+
+      a {
+        padding: 10px 12px;
+      }
+    }
+
+    &_nav {
+      gap: 18px;
+    }
+
+    &_bottom {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    &_bottom_links {
+      flex-direction: column;
+      gap: 12px;
+    }
+  }
+}

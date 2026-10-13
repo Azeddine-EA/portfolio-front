@@ -1,0 +1,134 @@
+
+.mentions {
+  min-height: 100vh;
+  padding: 50px 20px;
+  color: #f5eaf0;
+  background-color: #18070d;
+
+  &_container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  &_back {
+    display: inline-block;
+    margin-bottom: 40px;
+    color: #d9a0b7;
+    text-decoration: none;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: white;
+    }
+  }
+
+  &_header {
+    margin-bottom: 45px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid rgba(179, 76, 117, 0.35);
+
+    h1 {
+      margin: 10px 0;
+      font-size: clamp(2rem, 5vw, 3rem);
+      color: white;
+    }
+
+    p {
+      color: #c6a6b2;
+      line-height: 1.7;
+    }
+  }
+
+  &_label {
+    color: #d66b94 !important;
+    font-size: 0.8rem;
+    letter-spacing: 3px;
+  }
+
+  &_section {
+    margin-bottom: 35px;
+    padding: 25px;
+    background: rgba(110, 23, 57, 0.12);
+    border: 1px solid rgba(179, 76, 117, 0.2);
+    border-radius: 10px;
+
+    h2 {
+      margin: 0 0 18px;
+      color: #e7a1bc;
+      font-size: 1.25rem;
+    }
+
+    p,
+    li {
+      color: #d9c6ce;
+      font-size: 0.95rem;
+      line-height: 1.8;
+    }
+
+    p {
+      margin-bottom: 15px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    strong {
+      color: white;
+    }
+
+    a {
+      color: #e7a1bc;
+      overflow-wrap: anywhere;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &_footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 45px;
+    padding-top: 25px;
+    border-top: 1px solid rgba(179, 76, 117, 0.25);
+
+    p {
+      color: #a98b97;
+      font-size: 0.85rem;
+    }
+
+    a {
+      color: #d9a0b7;
+      text-decoration: none;
+
+      &:hover {
+        color: white;
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .mentions {
+    padding: 30px 15px;
+
+    &_section {
+      padding: 18px;
+    }
+
+    &_footer {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+}

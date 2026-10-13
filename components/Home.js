@@ -57,7 +57,7 @@ function Home({ showConnexion }) {
   // });
   const Outils = langagesData.map((langage, i) => {
     return (
-      <div className={styles.profil_outil}>
+      <div className={styles.profil_outil} id="#profil">
         <img
           key={i}
           className={`${styles.profil_left_imgLogo} ${styles[`profil_left_imgLogo_${langage.name.toLowerCase()}`]}`}

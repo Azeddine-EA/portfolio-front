@@ -14,9 +14,10 @@ function Contact({ socials }) {
 
   const [status, setStatus] = useState("");
   const [loading, setLoading] = useState(false);
+  const [active, setActive] = useState(false);
   // const [typeSite, setTypeSite] = useState("");
   // const [budget, setBudget] = useState("");
-  const [changeforme, setChangeForme] = useState(false);
+  const [changeforme, setChangeForme] = useState(true);
   // const [socialsData, setSocialsData] = useState([]);
 
   const handleChange = (e) => {
@@ -27,6 +28,8 @@ function Contact({ socials }) {
   };
   const changeForm = () => {
     setChangeForme((prev) => !prev);
+    setActive((prev) => !prev);
+
   };
 
   const handleSubmit = async (e) => {
@@ -104,18 +107,19 @@ function Contact({ socials }) {
 
   // }, []);
 
-  const SocialsContact = socials.map((social, i) => {
-    return (
-      <a href={social.link}>
-        <img
-          key={i}
-          className={`${styles.contact_socials_social} ${styles[`contact_socials_social_${social.name.toLowerCase()}`]}`}
-          src={social.img}
-          alt={social.name}
-        />
-      </a>
-    );
-  });
+  // const SocialsContact = socials.map((social, i) => {
+  //   return (
+  //     <a href={social.link}>
+  //       <img
+  //         key={i}
+  //         className={`${styles.contact_socials_social} ${styles[`contact_socials_social_${social.name.toLowerCase()}`]}`}
+  //         src={social.img}
+  //         alt={social.name}
+  //       />
+  //               <h3>{social.name}</h3>
+  //     </a>
+  //   );
+  // });
 
   return (
     <main className={styles.contact}>
@@ -125,8 +129,8 @@ function Contact({ socials }) {
         <p className={styles.contact_title}>
           Une question, un projet ou une opportunité ? Envoyez-moi un message.
         </p>
-        <button onClick={changeForm} className={styles.contact_title}>
-          Devis
+        <button onClick={changeForm} className={active ? styles.contact_title_btn_on : styles.contact_title_btn_off}>
+          Devis ?
         </button>
         {changeforme ? (
           <form
@@ -189,7 +193,7 @@ function Contact({ socials }) {
                   {status}
                 </p>
               )}
-              <div className={styles.contact_socials}>{SocialsContact}</div>
+              {/* <div className={styles.contact_socials}>{SocialsContact}</div> */}
             </div>
           </form>
         ) : (
@@ -285,7 +289,7 @@ function Contact({ socials }) {
                   {status}
                 </p>
               )}
-              <div className={styles.contact_socials}>{SocialsContact}</div>
+              {/* <div className={styles.contact_socials}>{SocialsContact}</div> */}
             </div>
           </form>
         )}

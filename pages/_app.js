@@ -1,4 +1,4 @@
-import '../styles/globals.css';
+import '../styles/globals.scss';
 import '../styles/Home.module.scss';
 import Head from 'next/head';
 import Header from '../components/global/Header';
