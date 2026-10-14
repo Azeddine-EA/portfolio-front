@@ -120,6 +120,8 @@ img {
     justify-content: center;
     align-items: center;
     gap: 20px;
+    background-color: color-mix(in srgb, var(--bg-border) 50%, transparent);
+    border-radius: 0 0 0 20px;
 
     position: fixed;
     top: var(--header-height);
@@ -130,7 +132,7 @@ img {
     padding: 20px 10px;
 
     box-sizing: border-box;
-    background-color: var(--bg-color);
+    // background-color: var(--bg-color);
     color: white;
 
     animation: entrerDroite 0.3s ease-out both;
