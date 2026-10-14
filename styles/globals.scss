@@ -21,27 +21,22 @@ body {
   min-height: 100vh;
   font-family: var(--font-mono);
 
-  background: linear-gradient(
-    to bottom,
-    #4a1726 0%,
-    #2b0d17 50%,
-    #16060b 100%
-  );
+  background: linear-gradient(to bottom, #4a1726 0%, #2b0d17 50%, #16060b 100%);
 }
- 
+
 :root {
   --bg-color: #5a0a2a;
-  --bg-color-trans:rgba(90, 10, 42, 0.623);
-  --bg-color-pal: #4A1633;
+  --bg-color-trans: rgba(90, 10, 42, 0.623);
+  --bg-color-pal: #4a1633;
   --bg-color-pal-trans: #4a163346;
   --bg-border: #923847;
   --text-white: #ffffff;
   --text-nav: #f0d0d8;
-  --font-mono: 'Space Mono', monospace;
+  --font-mono: "Space Mono", monospace;
   --header-height: 72px;
   --transition-speed: 0.2s;
 }
- 
+
 .header {
   background-color: var(--bg-color);
   padding: 0 2rem;
@@ -60,12 +55,12 @@ body {
   gap: 0.75rem;
   text-decoration: none;
 }
- 
+
 .header-avatar {
   font-size: 1.8rem;
   line-height: 1;
 }
- 
+
 .header-name {
   color: var(--text-white);
   font-size: 1rem;
@@ -73,13 +68,13 @@ body {
   letter-spacing: 0.05em;
   white-space: nowrap;
 }
- 
+
 .header-nav {
   display: flex;
   align-items: center;
   gap: 2rem;
 }
- 
+
 .header-nav a {
   color: var(--text-nav);
   text-decoration: none;
@@ -89,7 +84,7 @@ body {
   transition: color var(--transition-speed) ease;
 }
 
-.header-btn_nav{
+.header-btn_nav {
   display: none;
 }
 .header-nav_side_off {
@@ -98,13 +93,13 @@ body {
 .header-nav a:hover {
   color: var(--text-white);
 }
-  img{
-    width: 68px;
-    /* background: transparent; */
-    /* height: 68px; */
-  }
+img {
+  width: 68px;
+  /* background: transparent; */
+  /* height: 68px; */
+}
 
-  @media (max-width: 600px) {
+@media (max-width: 600px) {
   .header {
     padding: 0 10px;
     gap: 10px;
@@ -120,6 +115,8 @@ body {
   .header-nav_side_on {
     display: flex;
     flex-direction: column;
+    pointer-events: auto;
+    z-index: 1000;
     justify-content: center;
     align-items: center;
     gap: 20px;
@@ -140,17 +137,15 @@ body {
   }
 
   .header-btn_nav img {
-  width: 24px;
-  height: 24px;
-  display: block;
-  object-fit: contain;
-}
+    width: 24px;
+    height: 24px;
+    display: block;
+    object-fit: contain;
+  }
 
-
-.header-btn_nav{
-  display: block;
-}
-
+  .header-btn_nav {
+    display: block;
+  }
 }
 
 @keyframes entrerDroite {
@@ -164,26 +159,6 @@ body {
     transform: translateX(0);
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 @layer base {
   :root {
