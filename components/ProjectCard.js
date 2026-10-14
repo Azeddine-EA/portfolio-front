@@ -8,7 +8,7 @@ function ProjectCard(props) {
 const deleteProject = async (idProject) => {
   try {
     const response = await fetch(
-      `http://localhost:3000/project/delete/${idProject}`,
+      `${process.env.NEXT_PUBLIC_API_URL}/delete/${idProject}`,
       {
         method: "DELETE",
       }

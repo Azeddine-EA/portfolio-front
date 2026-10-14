@@ -34,13 +34,13 @@ function Home({ showConnexion }) {
   const [dateFin, setDateFin] = useState("");
   // const [newProject, setNewProject] = useState(false);
   const allLanguages = () => {
-    fetch(`http://localhost:3000/technology/languages`)
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/technology/languages`)
       .then((response) => response.json())
       .then((data) => setLangagesData(data.languages));
   };
 
   const allSocials = () => {
-    fetch(`http://localhost:3000/technology/socials`)
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/technology/socials`)
       .then((response) => response.json())
       .then((data) => setSocialsData(data.socials));
   };
@@ -94,7 +94,7 @@ function Home({ showConnexion }) {
   // });
   // PROJET - FETCH la bdd  exemple
   const allProject = () => {
-    fetch(`http://localhost:3000/project/read`)
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/project/read`)
       .then((response) => response.json())
       .then((data) => setProjectData(data.projects));
   };
@@ -121,7 +121,7 @@ function Home({ showConnexion }) {
 
   const handleCreateProject = async () => {
     try {
-      const response = await fetch("http://localhost:3000/project/create", {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/project/create`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
