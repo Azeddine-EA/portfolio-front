@@ -57,7 +57,7 @@ function Home({ showConnexion }) {
   // });
   const Outils = langagesData.map((langage, i) => {
     return (
-      <div className={styles.profil_outil} id="#profil">
+      <div className={styles.profil_outil} >
         <img
           key={i}
           className={`${styles.profil_left_imgLogo} ${styles[`profil_left_imgLogo_${langage.name.toLowerCase()}`]}`}
@@ -168,7 +168,7 @@ function Home({ showConnexion }) {
   console.log(router.pathname);
   return (
     <>
-      <div className={styles.profil}>
+      <div className={styles.profil} id="profil">
         {showConnexion && <Connexion />}
         <div className={styles.profil_text}>
           <div className={styles.profil_text_head}>
