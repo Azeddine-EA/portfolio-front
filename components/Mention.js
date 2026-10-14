@@ -38,8 +38,7 @@ function MentionsLegales() {
               <strong>Statut :</strong> Entrepreneur individuel
             </li>
             <li>
-              <strong>Adresse :</strong> [À compléter selon les obligations
-              applicables]
+              <strong>Adresse :</strong> Île de France 78130
             </li>
             <li>
               <strong>Numéro SIREN :</strong> 10614264900016

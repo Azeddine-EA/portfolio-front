@@ -30,7 +30,7 @@ export default function Header() {
   
 
   return (
-    <header className="header">
+    <header className="header" >
       <a href="#" className="header-brand">
         <span className="header-avatar">
           <img src="/pdpme.png" alt="avatar" />

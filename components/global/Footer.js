@@ -84,9 +84,9 @@ function Footer() {
             <span>Développé avec React & Next.js</span>
           </div>
 
-          <a className={styles.footer_top_button} href="#home" aria-label="Retour en haut">
+          {/* <a className={styles.footer_top_button} href="#profil" aria-label="Retour en haut">
             <ArrowUp size={20} />
-          </a>
+          </a> */}
         </div>
 
       </div>
